@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#fbfaf7">
+<title>Dad's Menu</title>
+<style>
+:root{
+  --bg:#fbfaf7; --paper:#fffefa; --ink:#2f241c;
+  --brown:#7b4a24; --red:#a53129; --line:#dcc8b2; --muted:#756a60;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:Arial,"Noto Sans KR","Apple SD Gothic Neo",sans-serif}
+header{
+  background:rgba(255,255,255,.96); border-bottom:1px solid var(--line);
+  padding:25px 16px 15px; text-align:center
+}
+.logo{font-family:Georgia,"Times New Roman",serif;font-size:31px;color:var(--red);line-height:1}
+.tagline{font-family:Georgia,"Times New Roman",serif;color:var(--brown);margin-top:6px;font-size:13px}
+.langs{
+  position:sticky;top:0;z-index:20;display:flex;gap:7px;justify-content:center;
+  flex-wrap:wrap;padding:11px 10px;background:rgba(251,250,247,.96);
+  backdrop-filter:blur(8px);border-bottom:1px solid #eee
+}
+.langs button{
+  border:1px solid #ccb79e;background:#fffefa;color:var(--brown);
+  border-radius:999px;padding:8px 12px;font-size:13px;cursor:pointer
+}
+.langs button.active{background:var(--brown);color:#fff;border-color:var(--brown)}
+main{max-width:720px;margin:0 auto;padding:17px 14px 44px}
+.section-title{
+  font-family:Georgia,"Times New Roman",serif;font-size:23px;color:#17120f;
+  margin:18px 4px 12px
+}
+.card{
+  background:var(--paper);border:1px solid #ece6df;border-radius:17px;
+  overflow:hidden;margin:0 0 18px;box-shadow:0 3px 14px rgba(60,40,20,.055)
+}
+.card img{display:block;width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;background:#f1eee8}
+.info{padding:14px 16px 16px}
+.name{font-size:19px;font-weight:750;letter-spacing:-.2px}
+.name-en{font-family:Georgia,serif;font-size:15px;color:var(--brown);margin-top:3px}
+.desc{font-size:13px;line-height:1.58;color:var(--muted);margin-top:7px}
+.price{margin-top:10px;color:var(--brown);font-size:16px;font-weight:750}
+.spicy{font-size:14px;margin-left:3px}
+.note{
+  margin-top:26px;padding:15px;border-top:1px solid var(--line);
+  color:var(--muted);font-size:12px;line-height:1.55
+}
+footer{text-align:center;color:#91867c;font-size:11px;padding:20px 14px 28px}
+.lang-hide{display:none}
+@media (min-width:700px){main{padding-left:18px;padding-right:18px}.card{display:block}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">Dad's</div>
+  <div class="tagline" id="tagline">Menu</div>
+</header>
+
+<nav class="langs" aria-label="Language">
+  <button class="active" onclick="setLang('ko', this)">🇰🇷 한국어</button>
+  <button onclick="setLang('en', this)">🇺🇸 English</button>
+  <button onclick="setLang('ja', this)">🇯🇵 日本語</button>
+  <button onclick="setLang('zh', this)">🇨🇳 中文</button>
+</nav>
+
+<main>
+  <h2 class="section-title" id="mainTitle">Main</h2>
+
+  <article class="card" data-key="m1">
+    <img src="images/01_abalone_spaghettini.png" alt="">
+    <div class="info">
+      <div class="name" data-i18n="m1">전복게우 크림 스파게티니</div>
+      <div class="name-en" data-i18n="e1">Abalone Umami Cream Spaghettini</div>
+      <div class="desc" data-i18n="d1">스파게티니, 전복버터구이, 게우(전복 내장), 크림, 트러플오일, 들기름, 깻잎채, 수비드 계란</div>
+      <div class="price">20,000</div>
+    </div>
+  </article>
+
+  <article class="card" data-key="m2">
+    <img src="images/02_abalone_risotto.png" alt="">
+    <div class="info">
+      <div class="name" data-i18n="m2">전복게우 크림 리조또</div>
+      <div class="name-en" data-i18n="e2">Abalone Umami Cream Risotto</div>
+      <div class="desc" data-i18n="d2">게우(전복 내장), 전복버터구이, 크림, 트러플오일, 들기름, 김부각</div>
+      <div class="price">20,000</div>
+    </div>
+  </article>
+
+  <article class="card" data-key="m3">
+    <img src="images/03_bracken_paccheri.png" alt="">
+    <div class="info">
+      <div class="name" data-i18n="m3">고사리 크림 파케리</div>
+      <div class="name-en" data-i18n="e3">Bracken Cream Paccheri</div>
+      <div class="desc" data-i18n="d3">파케리, 국내산 고사리, 버섯, 트러플오일, 들깨가루, 트러플버터</div>
+      <div class="price">20,000</div>
+    </div>
+  </article>
+
+  <article class="card" data-key="m4">
+    <img src="images/04_white_ragu_mafaldine.png" alt="">
+    <div class="info">
+      <div class="name" data-i18n="m4">간장전복 화이트라구 마팔디네</div>
+      <div class="name-en" data-i18n="e4">Abalone & Soy Sauce White Ragu Mafaldine</div>
+      <div class="desc" data-i18n="d4">마팔디네, 간장전복, 돼지고기, 소고기, 크림, 버섯 페이스트</div>
+      <div class="price">20,000</div>
+    </div>
+  </article>
+
+  <article class="card" data-key="m5">
+    <img src="images/05_abalone_aglio.png" alt="">
+    <div class="info">
+      <div class="name" data-i18n="m5">전복 참나물 알리오올리오 <span class="spicy">🌶️</span></div>
+      <div class="name-en" data-i18n="e5">Abalone & Chamnamul Aglio e Olio</div>
+      <div class="desc" data-i18n="d5">스파게티니(면), 전복, 찹쌀누룽지, 마늘, 엔초비, 페페론치노, 올리브오일 엑스트라버진</div>
+      <div class="price">19,000</div>
+    </div>
+  </article>
+
+  <article class="card" data-key="m6">
+    <img src="images/06_bibimbap_double.png" alt="">
+    <div class="info">
+      <div class="name" data-i18n="m6">저염전복 비빔(밥) [2마리]</div>
+      <div class="name-en" data-i18n="e6">Low Sodium Abalone Bibimbap (Two Abalones)</div>
+      <div class="desc" data-i18n="d6">강황밥, 간장전복(2마리), 저염간장, 당근라페, 아보카도, 김퓨레, 수비드 계란, 날치알</div>
+      <div class="price">19,000</div>
+    </div>
+  </article>
+
+  <article class="card" data-key="m7">
+    <img src="images/07_bibimbap_single.png" alt="">
+    <div class="info">
+      <div class="name" data-i18n="m7">저염전복 비빔(밥)</div>
+      <div class="name-en" data-i18n="e7">Low Sodium Abalone Bibimbap</div>
+      <div class="desc" data-i18n="d7">강황밥, 간장전복, 저염간장, 당근라페, 아보카도, 김퓨레, 수비드 계란, 날치알</div>
+      <div class="price">15,000</div>
+    </div>
+  </article>
+
+  <article class="card" data-key="m8">
+    <img src="images/08_spicy_tomato_risotto.png" alt="">
+    <div class="info">
+      <div class="name" data-i18n="m8">스파이시 토마토 리조또 <span class="spicy">🌶️🌶️🌶️</span></div>
+      <div class="name-en" data-i18n="e8">Spicy Tomato Risotto</div>
+      <div class="desc" data-i18n="d8">수제 토마토소스, 새우버터구이, 수비드 계란, 모짜렐라 치즈, 버터</div>
+      <div class="price">18,000</div>
+    </div>
+  </article>
+
+  <article class="card" data-key="m9">
+    <img src="images/09_spicy_tomato_pasta.png" alt="">
+    <div class="info">
+      <div class="name" data-i18n="m9">토마토 해장파스타 <span class="spicy">🌶️🌶️🌶️</span></div>
+      <div class="name-en" data-i18n="e9">Spicy Tomato Pasta</div>
+      <div class="desc" data-i18n="d9">스파게티니(면), 수제 토마토소스, 새우버터구이, 수비드 계란, 모짜렐라 치즈</div>
+      <div class="price">18,000</div>
+    </div>
+  </article>
+
+  <h2 class="section-title" id="saladTitle">Salad</h2>
+
+  <article class="card" data-key="m10">
+    <img src="images/10_grilled_napa_salad.png" alt="">
+    <div class="info">
+      <div class="name" data-i18n="m10">구운 알배추 샐러드</div>
+      <div class="name-en" data-i18n="e10">Grilled Baby Napa Cabbage Salad</div>
+      <div class="desc" data-i18n="d10">알배추, 참깨드레싱, 고추기름, 루꼴라, 양파 후레이크</div>
+      <div class="price">13,000</div>
+    </div>
+  </article>
+
+  <div class="note" id="note">
+    ※ 알레르기 유발성분 및 원산지 정보는 매장 안내를 확인해 주세요.
+  </div>
+</main>
+
+<footer>Dad's Menu</footer>
+
+<script>
+const T={
+  ko:{
+    tagline:"Menu", main:"Main", salad:"Salad",
+    m1:"전복게우 크림 스파게티니",e1:"Abalone Umami Cream Spaghettini",d1:"스파게티니, 전복버터구이, 게우(전복 내장), 크림, 트러플오일, 들기름, 깻잎채, 수비드 계란",
+    m2:"전복게우 크림 리조또",e2:"Abalone Umami Cream Risotto",d2:"게우(전복 내장), 전복버터구이, 크림, 트러플오일, 들기름, 김부각",
+    m3:"고사리 크림 파케리",e3:"Bracken Cream Paccheri",d3:"파케리, 국내산 고사리, 버섯, 트러플오일, 들깨가루, 트러플버터",
+    m4:"간장전복 화이트라구 마팔디네",e4:"Abalone & Soy Sauce White Ragu Mafaldine",d4:"마팔디네, 간장전복, 돼지고기, 소고기, 크림, 버섯 페이스트",
+    m5:"전복 참나물 알리오올리오 🌶️",e5:"Abalone & Chamnamul Aglio e Olio",d5:"스파게티니(면), 전복, 찹쌀누룽지, 마늘, 엔초비, 페페론치노, 올리브오일 엑스트라버진",
+    m6:"저염전복 비빔(밥) [2마리]",e6:"Low Sodium Abalone Bibimbap (Two Abalones)",d6:"강황밥, 간장전복(2마리), 저염간장, 당근라페, 아보카도, 김퓨레, 수비드 계란, 날치알",
+    m7:"저염전복 비빔(밥)",e7:"Low Sodium Abalone Bibimbap",d7:"강황밥, 간장전복, 저염간장, 당근라페, 아보카도, 김퓨레, 수비드 계란, 날치알",
+    m8:"스파이시 토마토 리조또 🌶️🌶️🌶️",e8:"Spicy Tomato Risotto",d8:"수제 토마토소스, 새우버터구이, 수비드 계란, 모짜렐라 치즈, 버터",
+    m9:"토마토 해장파스타 🌶️🌶️🌶️",e9:"Spicy Tomato Pasta",d9:"스파게티니(면), 수제 토마토소스, 새우버터구이, 수비드 계란, 모짜렐라 치즈",
+    m10:"구운 알배추 샐러드",e10:"Grilled Baby Napa Cabbage Salad",d10:"알배추, 참깨드레싱, 고추기름, 루꼴라, 양파 후레이크",
+    note:"※ 알레르기 유발성분 및 원산지 정보는 매장 안내를 확인해 주세요."
+  },
+  en:{
+    tagline:"Menu",main:"Main",salad:"Salad",
+    m1:"Abalone Umami Cream Spaghettini",e1:"Abalone Umami Cream Spaghettini",d1:"Spaghettini, butter-seared abalone, abalone innards, cream, truffle oil, perilla oil, shredded perilla leaves, sous-vide egg",
+    m2:"Abalone Umami Cream Risotto",e2:"Abalone Umami Cream Risotto",d2:"Abalone innards, butter-seared abalone, cream, truffle oil, perilla oil, crispy seaweed rice paper",
+    m3:"Bracken Cream Paccheri",e3:"Bracken Cream Paccheri",d3:"Paccheri, Korean bracken fern, mushrooms, truffle oil, perilla seed powder, truffle butter",
+    m4:"Abalone & Soy Sauce White Ragu Mafaldine",e4:"Abalone & Soy Sauce White Ragu Mafaldine",d4:"Mafaldine, soy-marinated abalone, pork, beef, cream, mushroom paste",
+    m5:"Abalone & Chamnamul Aglio e Olio 🌶️",e5:"Abalone & Chamnamul Aglio e Olio",d5:"Spaghettini, abalone, crispy rice, garlic, anchovy, peperoncino, extra virgin olive oil",
+    m6:"Low Sodium Abalone Bibimbap (Two Abalones)",e6:"Low Sodium Abalone Bibimbap (Two Abalones)",d6:"Turmeric rice, two soy-marinated abalones, low-sodium soy sauce, carrot remoulade, avocado, seaweed purée, sous-vide egg, flying fish roe",
+    m7:"Low Sodium Abalone Bibimbap",e7:"Low Sodium Abalone Bibimbap",d7:"Turmeric rice, soy-marinated abalone, low-sodium soy sauce, carrot remoulade, avocado, seaweed purée, sous-vide egg, flying fish roe",
+    m8:"Spicy Tomato Risotto 🌶️🌶️🌶️",e8:"Spicy Tomato Risotto",d8:"House-made tomato sauce, butter-seared shrimp, sous-vide egg, mozzarella, butter",
+    m9:"Spicy Tomato Pasta 🌶️🌶️🌶️",e9:"Spicy Tomato Pasta",d9:"Spaghettini, house-made tomato sauce, butter-seared shrimp, sous-vide egg, mozzarella",
+    m10:"Grilled Baby Napa Cabbage Salad",e10:"Grilled Baby Napa Cabbage Salad",d10:"Baby napa cabbage, sesame dressing, chili oil, arugula, crispy onion",
+    note:"※ Please ask the staff for allergen and ingredient-origin information."
+  },
+  ja:{
+    tagline:"メニュー",main:"メイン",salad:"サラダ",
+    m1:"アワビの肝クリーム スパゲッティーニ",e1:"Abalone Umami Cream Spaghettini",d1:"スパゲッティーニ、アワビのバター焼き、アワビの肝、クリーム、トリュフオイル、エゴマ油、エゴマの葉、低温調理卵",
+    m2:"アワビの肝クリーム リゾット",e2:"Abalone Umami Cream Risotto",d2:"アワビの肝、アワビのバター焼き、クリーム、トリュフオイル、エゴマ油、海苔チップ",
+    m3:"ワラビのクリーム パッケリ",e3:"Bracken Cream Paccheri",d3:"パッケリ、韓国産ワラビ、きのこ、トリュフオイル、エゴマ粉、トリュフバター",
+    m4:"醤油アワビのホワイトラグー マファルディネ",e4:"Abalone & Soy Sauce White Ragu Mafaldine",d4:"マファルディネ、醤油漬けアワビ、豚肉、牛肉、クリーム、きのこペースト",
+    m5:"アワビとチャムナムルのアーリオ・オーリオ 🌶️",e5:"Abalone & Chamnamul Aglio e Olio",d5:"スパゲッティーニ、アワビ、クリスピーライス、にんにく、アンチョビ、ペペロンチーノ、エクストラバージンオリーブオイル",
+    m6:"減塩アワビビビンバ [アワビ2個]",e6:"Low Sodium Abalone Bibimbap (Two Abalones)",d6:"ターメリックライス、醤油漬けアワビ2個、減塩醤油、キャロットラペ、アボカド、海苔ピューレ、低温調理卵、とびこ",
+    m7:"減塩アワビビビンバ",e7:"Low Sodium Abalone Bibimbap",d7:"ターメリックライス、醤油漬けアワビ、減塩醤油、キャロットラペ、アボカド、海苔ピューレ、低温調理卵、とびこ",
+    m8:"ピリ辛トマト リゾット 🌶️🌶️🌶️",e8:"Spicy Tomato Risotto",d8:"自家製トマトソース、エビのバター焼き、低温調理卵、モッツァレラチーズ、バター",
+    m9:"ピリ辛トマト パスタ 🌶️🌶️🌶️",e9:"Spicy Tomato Pasta",d9:"スパゲッティーニ、自家製トマトソース、エビのバター焼き、低温調理卵、モッツァレラチーズ",
+    m10:"焼き白菜サラダ",e10:"Grilled Baby Napa Cabbage Salad",d10:"白菜、胡麻ドレッシング、唐辛子オイル、ルッコラ、フライドオニオン",
+    note:"※ アレルギー情報と原産地についてはスタッフまでお尋ねください。"
+  },
+  zh:{
+    tagline:"菜单",main:"主菜",salad:"沙拉",
+    m1:"鲍鱼肝奶油细意面",e1:"Abalone Umami Cream Spaghettini",d1:"细意面、黄油煎鲍鱼、鲍鱼肝、奶油、松露油、紫苏油、紫苏叶丝、低温慢煮鸡蛋",
+    m2:"鲍鱼肝奶油烩饭",e2:"Abalone Umami Cream Risotto",d2:"鲍鱼肝、黄油煎鲍鱼、奶油、松露油、紫苏油、海苔脆片",
+    m3:"蕨菜奶油帕切里",e3:"Bracken Cream Paccheri",d3:"帕切里意面、韩国蕨菜、蘑菇、松露油、紫苏籽粉、松露黄油",
+    m4:"酱油鲍鱼白酱肉酱马法尔迪内",e4:"Abalone & Soy Sauce White Ragu Mafaldine",d4:"马法尔迪内、酱油鲍鱼、猪肉、牛肉、奶油、蘑菇酱",
+    m5:"鲍鱼与嫩参菜蒜香橄榄油意面 🌶️",e5:"Abalone & Chamnamul Aglio e Olio",d5:"细意面、鲍鱼、脆米、蒜、凤尾鱼、佩佩罗奇诺、特级初榨橄榄油",
+    m6:"低盐鲍鱼拌饭 [鲍鱼2只]",e6:"Low Sodium Abalone Bibimbap (Two Abalones)",d6:"姜黄饭、酱油鲍鱼2只、低盐酱油、胡萝卜沙拉、牛油果、海苔泥、低温慢煮鸡蛋、飞鱼籽",
+    m7:"低盐鲍鱼拌饭",e7:"Low Sodium Abalone Bibimbap",d7:"姜黄饭、酱油鲍鱼、低盐酱油、胡萝卜沙拉、牛油果、海苔泥、低温慢煮鸡蛋、飞鱼籽",
+    m8:"香辣番茄烩饭 🌶️🌶️🌶️",e8:"Spicy Tomato Risotto",d8:"自制番茄酱、黄油煎虾、低温慢煮鸡蛋、马苏里拉奶酪、黄油",
+    m9:"香辣番茄意面 🌶️🌶️🌶️",e9:"Spicy Tomato Pasta",d9:"细意面、自制番茄酱、黄油煎虾、低温慢煮鸡蛋、马苏里拉奶酪",
+    m10:"烤娃娃白菜沙拉",e10:"Grilled Baby Napa Cabbage Salad",d10:"娃娃白菜、芝麻酱、辣椒油、芝麻菜、炸洋葱",
+    note:"※ 过敏原及食材产地信息请咨询工作人员。"
+  }
+};
+
+function setLang(lang, btn){
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    const key=el.dataset.i18n;
+    if (T[lang][key]) {
+      if (el.classList.contains("name")) el.textContent=T[lang][key];
+      else el.textContent=T[lang][key];
+    }
+  });
+  document.getElementById("tagline").textContent=T[lang].tagline;
+  document.getElementById("mainTitle").textContent=T[lang].main;
+  document.getElementById("saladTitle").textContent=T[lang].salad;
+  document.getElementById("note").textContent=T[lang].note;
+  document.querySelectorAll(".langs button").forEach(b=>b.classList.remove("active"));
+  btn.classList.add("active");
+  document.documentElement.lang=lang;
+}
+</script>
+</body>
+</html>
