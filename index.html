@@ -176,9 +176,7 @@ footer{text-align:center;color:#91867c;font-size:11px;padding:20px 14px 28px}
   <div class="note" id="note">
     ※ 알레르기 유발성분 및 원산지 정보는 매장 안내를 확인해 주세요.
   </div>
-  <div class="packing">
-  전메뉴 포장 가능합니다.
-</div>
+  <div class="packing" id="packing">전메뉴 포장 가능합니다.</div>
 </main>
 
 <footer>Dad's Menu</footer>
@@ -197,7 +195,8 @@ const T={
     m8:"스파이시 토마토 리조또 🌶️🌶️🌶️",e8:"Spicy Tomato Risotto",d8:"수제 토마토소스, 새우버터구이, 수비드 계란, 모짜렐라 치즈, 버터",
     m9:"토마토 해장파스타 🌶️🌶️🌶️",e9:"Spicy Tomato Pasta",d9:"스파게티니(면), 수제 토마토소스, 새우버터구이, 수비드 계란, 모짜렐라 치즈",
     m10:"구운 알배추 샐러드",e10:"Grilled Baby Napa Cabbage Salad",d10:"알배추, 참깨드레싱, 고추기름, 루꼴라, 양파 후레이크",
-    note:"※ 알레르기 유발성분 및 원산지 정보는 매장 안내를 확인해 주세요."
+    note:"※ 알레르기 유발성분 및 원산지 정보는 매장 안내를 확인해 주세요.",
+    packing:"전메뉴 포장 가능합니다."
   },
   en:{
     tagline:"Menu",main:"Main",salad:"Salad",
@@ -211,7 +210,8 @@ const T={
     m8:"Spicy Tomato Risotto 🌶️🌶️🌶️",e8:"Spicy Tomato Risotto",d8:"House-made tomato sauce, butter-seared shrimp, sous-vide egg, mozzarella, butter",
     m9:"Spicy Tomato Pasta 🌶️🌶️🌶️",e9:"Spicy Tomato Pasta",d9:"Spaghettini, house-made tomato sauce, butter-seared shrimp, sous-vide egg, mozzarella",
     m10:"Grilled Baby Napa Cabbage Salad",e10:"Grilled Baby Napa Cabbage Salad",d10:"Baby napa cabbage, sesame dressing, chili oil, arugula, crispy onion",
-    note:"※ Please ask the staff for allergen and ingredient-origin information."
+    note:"※ Please ask the staff for allergen and ingredient-origin information.",
+    packing:"All menu items are available for takeout."
   },
   ja:{
     tagline:"メニュー",main:"メイン",salad:"サラダ",
@@ -225,7 +225,8 @@ const T={
     m8:"ピリ辛トマト リゾット 🌶️🌶️🌶️",e8:"Spicy Tomato Risotto",d8:"自家製トマトソース、エビのバター焼き、低温調理卵、モッツァレラチーズ、バター",
     m9:"ピリ辛トマト パスタ 🌶️🌶️🌶️",e9:"Spicy Tomato Pasta",d9:"スパゲッティーニ、自家製トマトソース、エビのバター焼き、低温調理卵、モッツァレラチーズ",
     m10:"焼き白菜サラダ",e10:"Grilled Baby Napa Cabbage Salad",d10:"白菜、胡麻ドレッシング、唐辛子オイル、ルッコラ、フライドオニオン",
-    note:"※ アレルギー情報と原産地についてはスタッフまでお尋ねください。"
+    note:"※ アレルギー情報と原産地についてはスタッフまでお尋ねください。",
+    packing:"全メニューお持ち帰りできます。"
   },
   zh:{
     tagline:"菜单",main:"主菜",salad:"沙拉",
@@ -239,7 +240,8 @@ const T={
     m8:"香辣番茄烩饭 🌶️🌶️🌶️",e8:"Spicy Tomato Risotto",d8:"自制番茄酱、黄油煎虾、低温慢煮鸡蛋、马苏里拉奶酪、黄油",
     m9:"香辣番茄意面 🌶️🌶️🌶️",e9:"Spicy Tomato Pasta",d9:"细意面、自制番茄酱、黄油煎虾、低温慢煮鸡蛋、马苏里拉奶酪",
     m10:"烤娃娃白菜沙拉",e10:"Grilled Baby Napa Cabbage Salad",d10:"娃娃白菜、芝麻酱、辣椒油、芝麻菜、炸洋葱",
-    note:"※ 过敏原及食材产地信息请咨询工作人员。"
+    note:"※ 过敏原及食材产地信息请咨询工作人员。",
+    packing:"所有菜品均可打包。"
   }
 };
 
@@ -255,6 +257,7 @@ function setLang(lang, btn){
   document.getElementById("mainTitle").textContent=T[lang].main;
   document.getElementById("saladTitle").textContent=T[lang].salad;
   document.getElementById("note").textContent=T[lang].note;
+  document.getElementById("packing").textContent=T[lang].packing;
   document.querySelectorAll(".langs button").forEach(b=>b.classList.remove("active"));
   btn.classList.add("active");
   document.documentElement.lang=lang;
