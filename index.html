@@ -50,6 +50,72 @@ main{max-width:720px;margin:0 auto;padding:17px 14px 44px}
   margin-top:26px;padding:15px;border-top:1px solid var(--line);
   color:var(--muted);font-size:12px;line-height:1.55
 }
+  .store-info{
+  display:none;
+  margin-top:24px;
+  padding:20px 16px;
+  border-top:1px solid var(--line);
+  color:var(--ink);
+}
+
+.store-info.show{
+  display:block;
+}
+
+.info-title{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:20px;
+  color:var(--red);
+}
+
+.info-subtitle{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:13px;
+  color:var(--brown);
+  margin-top:4px;
+}
+
+.info-item{
+  margin-top:18px;
+  font-size:13px;
+  line-height:1.6;
+}
+
+.info-item strong{
+  display:block;
+  font-size:14px;
+  font-weight:700;
+}
+
+.info-item span{
+  display:block;
+  color:var(--brown);
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:12px;
+  margin-bottom:2px;
+}
+
+.info-warning{
+  margin-top:20px;
+  padding-top:14px;
+  border-top:1px solid var(--line);
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.6;
+}
+
+.naver-map{
+  display:block;
+  margin-top:18px;
+  padding:10px;
+  border:1px solid #ccb79e;
+  border-radius:999px;
+  text-align:center;
+  text-decoration:none;
+  color:var(--brown);
+  font-size:12px;
+}
+
 
   .packing{
   font-size:12px;
@@ -73,6 +139,7 @@ footer{text-align:center;color:#91867c;font-size:11px;padding:20px 14px 28px}
   <button onclick="setLang('en', this)">🇺🇸 English</button>
   <button onclick="setLang('ja', this)">🇯🇵 日本語</button>
   <button onclick="setLang('zh', this)">🇨🇳 中文</button>
+  <button onclick="toggleInfo()">ⓘ INFO</button>
 </nav>
 
 <main>
@@ -187,6 +254,55 @@ footer{text-align:center;color:#91867c;font-size:11px;padding:20px 14px 28px}
 <div class="packing" id="packing">
   전메뉴 포장 가능합니다.
 </div>
+  <div class="store-info" id="storeInfo">
+  <div class="info-title">아장아장 아빠 만든 전복장</div>
+  <div class="info-subtitle">Dad's Abalone Jang</div>
+
+  <div class="info-item">
+    <strong>영업시간</strong>
+    <span>Opening Hours</span>
+    11:00 – 20:30
+  </div>
+
+  <div class="info-item">
+    <strong>라스트오더</strong>
+    <span>Last Order</span>
+    월–금 14:00 · 주말 14:15<br>
+    Mon–Fri 14:00 · Weekends 14:15
+  </div>
+
+  <div class="info-item">
+    <strong>브레이크 타임</strong>
+    <span>Break Time</span>
+    15:00 – 17:00
+  </div>
+
+  <div class="info-item">
+    <strong>위치</strong>
+    <span>Location</span>
+    경기 수원시 영통구 권선로882번길 107-66, 1층
+  </div>
+
+  <div class="info-item">
+    <strong>주차 안내</strong>
+    <span>Parking</span>
+    신동 제2거주자공영주차장<br>
+    08:00–18:00 · 무료<br><br>
+    신동 제3거주자공영주차장<br>
+    1시간 회차 가능
+  </div>
+
+  <div class="info-warning">
+    ※ 건물 내 주차는 불가합니다.<br>
+    Parking is not available at the restaurant building.
+  </div>
+
+  <a class="naver-map"
+     href="https://map.naver.com/p/entry/place/1216066235"
+     target="_blank">
+    NAVER MAP →
+  </a>
+</div>
 </main>
 
 <footer>Dad's Menu</footer>
@@ -271,6 +387,9 @@ function setLang(lang, btn){
   document.querySelectorAll(".langs button").forEach(b=>b.classList.remove("active"));
   btn.classList.add("active");
   document.documentElement.lang=lang;
+}
+  function toggleInfo(){
+  document.getElementById("storeInfo").classList.toggle("show");
 }
 </script>
 </body>
