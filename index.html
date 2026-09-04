@@ -47,6 +47,100 @@ main{max-width:720px;margin:0 auto;padding:17px 14px 44px}
 .price{margin-top:10px;color:var(--brown);font-size:16px;font-weight:750}
 .spicy{font-size:14px;margin-left:3px}
 .note{
+  .info-toggle-wrap{
+  text-align:center;
+  padding:10px 10px 4px;
+}
+
+.info-toggle{
+  border:1px solid #ccb79e;
+  background:#fffefa;
+  color:var(--brown);
+  border-radius:999px;
+  padding:7px 14px;
+  font-size:12px;
+  cursor:pointer;
+}
+
+.info-toggle:hover{
+  background:#f7f0e8;
+}
+
+.store-info{
+  display:none;
+  max-width:720px;
+  margin:12px auto 8px;
+  padding:0 14px;
+}
+
+.store-info.show{
+  display:block;
+}
+
+.store-info > div{
+  background:var(--paper);
+  border:1px solid #ece6df;
+  border-radius:17px;
+  padding:20px 17px;
+  box-shadow:0 3px 14px rgba(60,40,20,.055);
+}
+
+.info-title{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:22px;
+  color:#17120f;
+}
+
+.info-subtitle{
+  font-family:Georgia,"Times New Roman",serif;
+  color:var(--brown);
+  font-size:13px;
+  margin-top:4px;
+}
+
+.info-item{
+  margin-top:17px;
+  padding-top:14px;
+  border-top:1px solid var(--line);
+  color:var(--ink);
+  font-size:13px;
+  line-height:1.6;
+}
+
+.info-item strong{
+  display:block;
+  font-size:14px;
+  font-weight:750;
+}
+
+.info-item .en{
+  display:block;
+  color:var(--brown);
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:12px;
+  margin-bottom:3px;
+}
+
+.info-warning{
+  margin-top:17px;
+  padding-top:14px;
+  border-top:1px solid var(--line);
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.55;
+}
+
+.naver-map{
+  display:block;
+  margin-top:17px;
+  padding:9px;
+  border:1px solid #ccb79e;
+  border-radius:999px;
+  text-align:center;
+  text-decoration:none;
+  color:var(--brown);
+  font-size:12px;
+}
   margin-top:26px;padding:15px;border-top:1px solid var(--line);
   color:var(--muted);font-size:12px;line-height:1.55
 }
@@ -141,6 +235,71 @@ footer{text-align:center;color:#91867c;font-size:11px;padding:20px 14px 28px}
   <button onclick="setLang('zh', this)">🇨🇳 中文</button>
 </nav>
 
+  <div class="info-toggle-wrap">
+  <button class="info-toggle" onclick="toggleInfo()">ⓘ INFO</button>
+</div>
+
+<div class="store-info" id="storeInfo">
+
+  <div class="info-title">가게 정보</div>
+  <div class="info-subtitle">Store Information</div>
+
+  <div class="info-item">
+    <strong>아장아장 아빠 만든 전복장</strong>
+    <span class="en">Dad's Abalone Jang</span>
+  </div>
+
+  <div class="info-item">
+    <strong>영업시간</strong>
+    <span class="en">Opening Hours</span>
+    11:00 – 20:30
+  </div>
+
+  <div class="info-item">
+    <strong>라스트오더</strong>
+    <span class="en">Last Order</span>
+    월–금 14:00 · 주말 14:15<br>
+    Mon–Fri 14:00 · Weekends 14:15
+  </div>
+
+  <div class="info-item">
+    <strong>브레이크 타임</strong>
+    <span class="en">Break Time</span>
+    15:00 – 17:00
+  </div>
+
+  <div class="info-item">
+    <strong>위치</strong>
+    <span class="en">Location</span>
+    경기 수원시 영통구 권선로882번길 107-66, 1층<br>
+    1F, 107-66, Gwonseon-ro 882beon-gil,<br>
+    Yeongtong-gu, Suwon-si, Gyeonggi-do
+  </div>
+
+  <div class="info-item">
+    <strong>주차 안내</strong>
+    <span class="en">Parking</span>
+    신동 제2거주자공영주차장<br>
+    08:00–18:00 · 무료<br><br>
+
+    신동 제3거주자공영주차장<br>
+    1시간 회차 가능
+  </div>
+
+  <div class="info-warning">
+    ※ 해당 건물 주차는 불가합니다. (거주자 전용)<br>
+    Parking is not available at the restaurant building.
+  </div>
+
+  <a
+    class="naver-map"
+    href="https://map.naver.com/p/entry/place/1216066235"
+    target="_blank">
+    NAVER MAP →
+  </a>
+
+</div>
+  
 <main>
   <h2 class="section-title" id="mainTitle">Main</h2>
 
@@ -387,6 +546,7 @@ function setLang(lang, btn){
   btn.classList.add("active");
   document.documentElement.lang=lang;
 }
+  
   function toggleInfo(){
   document.getElementById("storeInfo").classList.toggle("show");
 }
